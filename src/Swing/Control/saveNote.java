@@ -10,7 +10,7 @@ import java.sql.Statement;
 /**
  * Created by qiuxin on 15/12/27.
  */
-public class saveNote {
+public class SaveNote {
     public static void save(String content, int id) {
         Connection con = DBConnect.Connect();
         String sqlStr = "INSERT INTO notes (notes, userid) VALUES (" + '"' +
