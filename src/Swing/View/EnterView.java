@@ -46,9 +46,10 @@ public class EnterView {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Login.LoginCheck(usernameField.getText(), new String(passwordField.getPassword()))){
+                int id = Login.LoginCheck(usernameField.getText(), new String(passwordField.getPassword()));
+                if (0 != id){
                     frame.dispose();
-                    MainView.main(null);
+                    MainView.main(id);
                 }else{
                     JOptionPane.showMessageDialog(null, " Wrong password or username!\tPlease input again! ",
                             "Wrong", JOptionPane.ERROR_MESSAGE);

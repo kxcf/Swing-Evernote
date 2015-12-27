@@ -9,7 +9,7 @@ import Swing.util.DBConnect;
  * Created by qiuxin on 15/12/24.
  */
 public class Login {
-    public static boolean LoginCheck(String userName, String passWord) {
+    public static int LoginCheck(String userName, String passWord) {
         Connection con = DBConnect.Connect();
         Statement stat = null;
         ResultSet rs = null;
@@ -19,9 +19,13 @@ public class Login {
             rs = stat.executeQuery(sqlStr);
             rs.next();
             if (rs.getString("password").equals(passWord)) {
-                return true;
+                sqlStr = "SELECT id FROM user WHERE username=" + '"'+userName+'"';
+                rs = stat.executeQuery(sqlStr);
+                rs.next();
+                int id = rs.getInt("id");
+                return id;
             } else {
-                return false;
+                return 0;
             }
 
         } catch (SQLException e) {
@@ -29,6 +33,6 @@ public class Login {
         } finally {
             DBConnect.close(con, rs, stat);
         }
-        return false;
+        return 0;
     }
 }

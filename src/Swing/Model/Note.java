@@ -1,9 +1,11 @@
 package Swing.Model;
 
+
 /**
  * Created by qiuxin on 15/12/26.
  */
 public class Note {
+
     String title;
 
     String content;
@@ -23,5 +25,4 @@ public class Note {
     public void setTitle(String title) {
         this.title = title;
     }
-
 }
